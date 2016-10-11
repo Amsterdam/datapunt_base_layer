@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="nl">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div class="js-google-maps google-maps"></div>
+        <script>
+            function initialize () {
+                var map,
+                    options = {
+                        mapTypeId: 'datapunt',
+                        center: {
+                            lat: 52.3727787,
+                            lng: 4.8929212
+                        },
+                        zoom: 14
+                    },
+                    baseLayerDatapunt = new google.maps.ImageMapType({
+                        name: 'Topografie',
+                        minZoom: 8,
+                        maxZoom: 16,
+                        tileSize: new google.maps.Size(256, 256),
+                        getTileUrl: function (coordinates, zoom) {
+                            //Todo: random r1, t4 pakken
+                            return 'https://t1.datapunt.amsterdam.nl/topo_google/' + zoom + '/' + coordinates.x + '/' + coordinates.y + '.png';
+                        }
+                    });
+                map = new google.maps.Map(document.querySelector('.js-google-maps'), options);
+                map.mapTypes.set('datapunt', baseLayerDatapunt);
+            }
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBixK_hmKyInvpHjz7XDQ8GoEcW0KFNzcY&callback=initialize" async defer></script>
+    </body>
+</html>
