@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="https://openlayers.org/en/v3.19.1/css/ol.css" type="text/css">
+        <style>
+            .map {
+                height: 400px;
+                width: 100%;
+            }
+        </style>
+        <script src="https://openlayers.org/en/v3.19.1/build/ol.js" type="text/javascript"></script>
+        <title>OpenLayers 3 example</title>
+    </head>
+    <body>
+        <h2>My Map</h2>
+        <div id="map" class="map"></div>
+        <script type="text/javascript">
+            var map = new ol.Map({
+                target: 'map',
+                layers: [
+                    new ol.layer.Tile({
+                        //source: new ol.source.OSM()
+                        source: new ol.source.TileImage({
+                            url: 'https://t{1-4}.datapunt.amsterdam.nl/topo_google/{z}/{x}/{y}.png'
+                        })
+                    })
+                ],
+                view: new ol.View({
+                    center: ol.proj.fromLonLat([4.8929212, 52.3727787]),
+                    zoom: 14
+                })
+            });
+        </script>
+    </body>
+</html>
