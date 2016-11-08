@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Leaflet WGS84 mockup with WMS-TMS layers from api.datapunt.amsterdam.nl</title>
+        <meta charset="utf-8" />
+        <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
+
+        <!-- extension for SINGLE tile option in Leaflet for proper rendering of WMS labels -->
+        <script src="https://cdn.rawgit.com/heigeo/leaflet.wms/gh-pages/leaflet.wms.js"></script>
+      
+        <style type="text/css">
+            html { height: 100%}
+            body { height: 100%; margin: 0; padding: 0}
+            #map { height: 100%}
+        </style>
+    </head>
+    <body>
+        <div id="map"></div>
+          <script> 
+            // Set div id to Leaflet map, center point and zoom level
+            var map = L.map('map').setView([52.379189, 4.899431], 13);
+       
+            var baseLayers = { 'Topografie': L.tileLayer('https://t1.datapunt.amsterdam.nl/topo_google/{z}/{x}/{y}.png');,
+                               'Luchtfoto' : L.WMS.tileLayer('https://map.datapunt.amsterdam.nl/maps/lufo?', 
+                                             { layers: 'lufo2016',
+                                               format: 'image/jpeg'
+                                               }); 
+                                };
+            var overlays = {
+              "Stadsdelen": L.WMS.overlay('https://map.datapunt.amsterdam.nl/maps/gebieden', 
+                              { layers: 'stadsdeel,stadsdeel_label',
+                                format: 'image/png',
+                                transparent: true
+                                }),
+              "Gebieden":   L.WMS.overlay('https://map.datapunt.amsterdam.nl/maps/gebieden', 
+                              { layers: 'gebiedsgerichtwerken,gebiedsgerichtwerken_label',
+                                format: 'image/png',
+                                transparent: true
+                                }),
+              "Wijken":     L.WMS.overlay('https://map.datapunt.amsterdam.nl/maps/gebieden', 
+                              { layers: 'buurtcombinatie,buurtcombinatie_label',
+                                format: 'image/png',
+                                transparent: true
+                                }),
+              "Buurten":    L.WMS.overlay('https://map.datapunt.amsterdam.nl/maps/gebieden', 
+                              { layers: 'buurt,buurt_label',
+                                format: 'image/png',
+                                transparent: true
+                                })
+              };             
+            //Load control layers 
+            L.control.layers(baseLayers,overlays).addTo(map); 
+            // Load default baselayer
+            baseLayers['Topografie'].addTo(map);
+            // Load default overlay
+            overlays['Stadsdelen'].addTo(map);
+        </script>
+    </body>
+</html>
