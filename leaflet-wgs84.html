@@ -55,6 +55,17 @@
             baseLayers['Topografie'].addTo(map);
             // Load default overlay
             overlays['Stadsdelen'].addTo(map);
-        </script>
+
+            var apiDataPoint = {
+                "type": "FeatureCollection",
+                "features": [{
+                    "type": "Feature",
+                    "properties": {},
+                    "geometry": {"type": "Point", "coordinates": [4.8536665047152106, 52.356698284874795]}
+                }]
+            }
+
+            L.geoJSON(apiDataPoint).addTo(map);
+          </script>
     </body>
 </html>
