@@ -19,7 +19,14 @@
         <div id="map"></div>
           <script> 
             // Set div id to Leaflet map, center point and zoom level
-            var map = L.map('map').setView([52.379189, 4.899431], 13);
+            var map = L
+                .map('map', {
+                    maxBounds: [
+                        [52.269470, 4.72876], //southWest
+                        [52.4322, 5.07916] //northEast
+                    ]
+                })
+                .setView([52.379189, 4.899431], 13);
        
             var baseLayers = { 'Topografie': L.tileLayer('https://t1.datapunt.amsterdam.nl/topo_google/{z}/{x}/{y}.png'),
                                'Luchtfoto' : L.WMS.tileLayer('https://map.datapunt.amsterdam.nl/maps/lufo?', 
