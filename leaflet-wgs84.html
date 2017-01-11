@@ -66,10 +66,10 @@
                 },
                 anotherApiDataPoint = {"type": "Point", "coordinates": [4.9983591, 52.3525697]};
 
-            L.geoJSON(apiDataPoint).addTo(map);
+            var marker1 = L.geoJSON(apiDataPoint).addTo(map);
 
             // Point with custom icon
-            L.geoJSON(anotherApiDataPoint, {
+            var marker2 = L.geoJSON(anotherApiDataPoint, {
                 pointToLayer: function (feature, latLng) {
                     var icon = L.icon({
                         iconUrl: 'assets/icon-search.png',
@@ -83,6 +83,10 @@
                     });
                 }
             }).addTo(map);
+
+            // Add popup to marker
+            marker2.bindPopup('Hallo <strong>ik ben dikgedrukt</strong> ddsdd.');
+            //ipv een string met HTML meegeven kan je ook met L.popup() een maatwerk popup maken http://leafletjs.com/reference.html#popup
           </script>
     </body>
 </html>
