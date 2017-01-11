@@ -57,15 +57,32 @@
             overlays['Stadsdelen'].addTo(map);
 
             var apiDataPoint = {
-                "type": "FeatureCollection",
-                "features": [{
-                    "type": "Feature",
-                    "properties": {},
-                    "geometry": {"type": "Point", "coordinates": [4.8536665047152106, 52.356698284874795]}
-                }]
-            }
+                    "type": "FeatureCollection",
+                    "features": [{
+                        "type": "Feature",
+                        "properties": {},
+                        "geometry": {"type": "Point", "coordinates": [4.8536665047152106, 52.356698284874795]}
+                    }]
+                },
+                anotherApiDataPoint = {"type": "Point", "coordinates": [4.9983591, 52.3525697]};
 
             L.geoJSON(apiDataPoint).addTo(map);
+
+            // Point with custom icon
+            L.geoJSON(anotherApiDataPoint, {
+                pointToLayer: function (feature, latLng) {
+                    var icon = L.icon({
+                        iconUrl: 'assets/icon-search.png',
+                        iconRetinaUrl: 'assets/icon-search-retina.png',
+                        iconSize: [30, 48],
+                        iconAnchor: [15, 51]
+                    });
+
+                    return L.marker(latLng, {
+                        icon: icon
+                    });
+                }
+            }).addTo(map);
           </script>
     </body>
 </html>
