@@ -33,24 +33,24 @@
                 maxZoom: 21,
                 subdomains: ['t1', 't2', 't3', 't4']
             };
-            var baseLayers = { 'Topografie': L.tileLayer('https://{s}.datapunt.amsterdam.nl/topo_google/{z}/{x}/{y}.png', baseLayerOptions)};
+            var baseLayers = { 'Topografie': L.tileLayer('https://{s}.data.amsterdam.nl/topo_google/{z}/{x}/{y}.png', baseLayerOptions)};
             var overlays = {
-              "Stadsdelen": L.WMS.overlay('https://map.datapunt.amsterdam.nl/maps/gebieden', 
+              "Stadsdelen": L.WMS.overlay('https://map.data.amsterdam.nl/maps/gebieden', 
                               { layers: 'stadsdeel,stadsdeel_label',
                                 format: 'image/png',
                                 transparent: true
                                 }),
-              "Gebieden":   L.WMS.overlay('https://map.datapunt.amsterdam.nl/maps/gebieden', 
+              "Gebieden":   L.WMS.overlay('https://map.data.amsterdam.nl/maps/gebieden', 
                               { layers: 'gebiedsgerichtwerken,gebiedsgerichtwerken_label',
                                 format: 'image/png',
                                 transparent: true
                                 }),
-              "Wijken":     L.WMS.overlay('https://map.datapunt.amsterdam.nl/maps/gebieden', 
+              "Wijken":     L.WMS.overlay('https://map.data.amsterdam.nl/maps/gebieden', 
                               { layers: 'buurtcombinatie,buurtcombinatie_label',
                                 format: 'image/png',
                                 transparent: true
                                 }),
-              "Buurten":    L.WMS.overlay('https://map.datapunt.amsterdam.nl/maps/gebieden', 
+              "Buurten":    L.WMS.overlay('https://map.data.amsterdam.nl/maps/gebieden', 
                               { layers: 'buurt,buurt_label',
                                 format: 'image/png',
                                 transparent: true

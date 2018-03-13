@@ -26,7 +26,7 @@
                         tileSize: new google.maps.Size(256, 256),
                         getTileUrl: function (coordinates, zoom) {
                             //Todo: random r1, t4 pakken
-                            return 'https://t1.datapunt.amsterdam.nl/topo_google/' + zoom + '/' + coordinates.x + '/' + coordinates.y + '.png';
+                            return 'https://t1.data.amsterdam.nl/topo_google/' + zoom + '/' + coordinates.x + '/' + coordinates.y + '.png';
                         }
                     });
                 map = new google.maps.Map(document.querySelector('.js-google-maps'), options);
